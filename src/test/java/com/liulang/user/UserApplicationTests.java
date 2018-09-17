@@ -2,6 +2,7 @@ package com.liulang.user;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -11,6 +12,7 @@ public class UserApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println(AopContext.currentProxy());
 	}
 
 }
