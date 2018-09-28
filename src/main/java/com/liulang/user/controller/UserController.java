@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.liulang.user.entity.User;
 import com.liulang.user.service.IUserService;
+import com.liulang.user.service.impl.UserServiceImpl;
 
 
 @RestController
@@ -16,11 +17,16 @@ import com.liulang.user.service.IUserService;
 public class UserController {
 	Logger log = LoggerFactory.getLogger(UserController.class);
 	@Autowired
-	IUserService userService;
+	UserServiceImpl userService;
 	@RequestMapping(value="/findUserById",method=RequestMethod.GET)
 	public User findUserById() {
 		System.out.println("=====>>>"+Thread.currentThread().getName());
 		log.debug("---hello");
-		return userService.findUserById(1);
+		try {
+			userService.inner();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

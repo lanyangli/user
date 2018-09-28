@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.liulang.user.entity.User;
 import com.liulang.user.service.IUserService;
 @Service
-@Transactional
 public class UserServiceImpl implements IUserService {
 	@Override
 	public User findUserById(Integer userId) {
@@ -20,6 +19,12 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public void addUser(User user) {
 
+	}
+	public void test() {
+	}
+	@Transactional(rollbackFor=RuntimeException.class)
+	public void inner() throws Exception{
+		throw new Exception("inner ");
 	}
 
 }
